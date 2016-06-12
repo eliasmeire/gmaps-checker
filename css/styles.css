@@ -1,0 +1,563 @@
+/**
+* Stylesheet for Maps Check
+*
+* @author 		Elias Meire  <elias.meire@student.odisee.be>
+*
+*/
+
+/* =============================================
+* GENERAL
+=============================================== */
+
+html {
+	font-size: 0.625em;  /* set 1 rem = 16px * 0.625 = 10px */
+	-webkit-font-smoothing: antialiased;
+}
+
+* {
+	margin: 0; /* overwrite browser defaults */
+	padding: 0;
+	color: #424242;
+	-webkit-box-sizing: border-box; /* use border-box box model everywhere */
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif, 'Montserrat'; /* font standard declaration*/
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: column;
+}
+
+body > * {
+	line-height: 1.5;
+	font-size: 1.2rem;
+}
+
+.structural {
+	position: absolute;
+	left: -9999px;
+}
+
+h1, h2, h3 {
+	font-family: 'Montserrat', 'Roboto', sans-serif;
+}
+
+h1 {
+	color: #fff;
+	font-size: 3.2rem;
+	margin-bottom: 5rem;
+}
+
+h2 {
+	font-size: 2.8rem;
+}
+
+ul {
+	list-style: none;
+}
+
+input:disabled:hover {
+	cursor: not-allowed;
+}
+
+/* =============================================
+* mapsForm
+=============================================== */
+
+#mapsForm {
+	background-color: #3367D6;
+	display: flex;
+	box-shadow: 0.1rem 1rem 1.8rem rgba(0,0,0,0.26);
+	width: 100%;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
+#mapsForm-content {
+	width: 80%;
+}
+
+#mapsForm .error {
+	margin: 0.5rem 0 1rem 0;
+}
+
+/* ================ FORM  ================= */
+
+
+input:not(.btn):not(.vex-dialog-button) {
+	border-radius: 0.5rem;
+	border-style: none;
+	background-color: #4285F4;
+	color: #D9E7FD;
+	width: 100%;
+	padding: 1rem;
+	font-size: 1.3rem;
+}
+
+.error {
+	color: #fb4f4f;
+}
+
+input:focus {
+	outline: none;
+	background-color: #428AFF !important;
+}
+
+input:hover, input:active { outline: none; }
+
+input::-webkit-input-placeholder { /* WebKit, Edge */
+	color: #B3CEFB;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #B3CEFB;
+	opacity: 1;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #B3CEFB;
+	opacity: 1;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: #B3CEFB;
+}
+
+/* ================ RADIO BUTTONS ================= */
+
+input[type="radio"] {
+	opacity: 0;
+	position: absolute;
+}
+
+input[type="radio"] + span {
+  	color: #B3CEFB;
+  	border-radius: 50%;
+  	padding: 1.2rem;
+  	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+}
+
+input[type="radio"]:checked + span {
+	color: #D9E7FD;
+  	background-color: #4285F4;
+}
+
+input[type="radio"]:focus + span {
+  	color: #fff;
+}
+
+#radios {
+	margin-top: 1rem;
+}
+
+#radios label {
+  	cursor: pointer;
+  	position: relative;
+}
+
+#radios label + label {
+	margin-left: 1.5rem;
+}
+
+#radios .error {
+	margin-top: 1.5rem;
+}
+
+/* ================ RADIO BUTTON TOOLTIPS ================= */
+
+#radios label:hover::before {
+	content: attr(for);
+	font-family: Roboto;
+	text-transform: capitalize;
+	font-size: 1.1rem;
+	position: absolute;
+	top: 170%;
+	left: 0;
+	right: 0;
+	opacity: 0.75;
+	background-color: #323232;
+	color: #fff;	
+	padding: 0.4rem;
+	border-radius: 0.3rem;
+}
+
+/* ================ BUTTONS ================= */
+
+.btn {
+	border: none;
+	transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	color: #D9E7FD;
+	background-color: #4285F4;
+	border-radius: 0.5rem;
+	padding: 0.7rem 3rem;
+	font-size: 1.8rem;
+	margin: 4rem auto;
+}
+
+#form1 .btn {
+	visibility: hidden;
+}
+
+.btn:active {
+	transform: translate(0rem,0.2rem);
+	-webkit-transform: translate(0rem,0.2rem);
+}
+
+.btn:focus {
+	outline: none;
+	box-shadow: none;
+	border: none;
+	color: #fff;
+}
+
+/* =============================================
+* CONTENT
+=============================================== */
+
+#content {
+	width: 100%;
+	padding: 2.6rem;
+}
+
+section:first-of-type h2 {
+	float: left;
+}
+
+section + section {
+	margin-top: 2rem;
+}
+
+/* ================ Toolbar ================= */
+
+#toolbar {
+	background-color: #3367D6;
+	border-radius: 0.7rem;
+	padding: 2rem;
+	display: none;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+#toolbar dl {
+	flex-direction: column;
+	border-radius: 0.7rem;
+	display: flex;
+	margin: 0 auto;
+}
+
+#toolbar dd {
+	flex-direction: row;
+	display: flex;
+	width: 100%;
+}
+
+#toolbar dd + dt + dd {
+	margin-top: 2rem; 
+}
+
+#toolbar p {
+	color: #D9E7FD;
+	font-size: 1.5rem;
+	line-height: 3.5rem;
+	margin-bottom: 2rem;
+	text-align: center;
+	width: 100%;
+}
+
+#btnAdd {
+	padding: 0.7rem 2rem;
+	font-size: 1.4rem;
+	margin: 1.5rem auto 0 auto;
+	width: 100%;
+}
+
+/* ================ Map ================= */
+
+#map-canvas {
+	height: 50vh;
+	border: 0.3rem solid #3367D6;
+	clear: both;
+}
+
+#estimate {
+	width: 100%;
+	display: none;
+	float: right;
+	line-height: 4.2rem;
+	font-family: Roboto;
+	font-size: 1.5rem;
+	background-color: #3367D6;
+	color: #D9E7FD;
+	border-radius: 0.5rem 0.5rem 0 0;
+	padding: 0 1rem;
+}
+
+#estimate span {
+	color: #D9E7FD;
+	font-size: 1.6rem;
+	font-weight: 500;
+}
+
+/* ================ Graph ================= */
+
+#graph-canvas {
+	width: 100%;
+}
+
+/* ================ Legend ================= */
+
+#graph-legend li {
+	float: left;
+	background-color: none;
+}
+
+#graph-legend li + li {
+	margin-left: 1rem;
+}
+
+#graph-legend li span {
+	float: left;
+	background-color: none;
+	color: #fff;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+}
+
+#graph-legend {
+	display: flex;
+	justify-content: center;
+}
+
+#btnSave {
+	display: block;
+	margin: 2rem auto;
+}
+
+#savedImages img {
+	background-color: #fff;
+	width: 100%;
+}
+
+.savedImg {
+	background-color: #3367D6;
+	border: 0.2rem solid #3367D6;
+	text-align: center;
+	display: inline-block;
+}
+
+.savedImg p {
+	color: #fff;
+	font-size: 1.5rem;
+}
+
+.savedImg button {
+	margin: 0.5rem auto;
+}
+
+.savedImg + .savedImg {
+	margin-top: 1rem;
+}
+
+/* =============================================
+* FOOTER
+=============================================== */
+
+/* =============================================
+* MEDIA QUERIES
+=============================================== */
+
+@media (min-width: 27em) {
+	#toolbar {
+		background-color: #3367D6;
+		border-radius: 0.7rem;
+		padding: 2rem;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	#toolbar dl {
+		flex-direction: row;
+		border-radius: 0.7rem;
+		display: flex;
+		margin: 0 auto;
+	}
+
+	#toolbar dd {
+		flex-direction: row;
+		display: flex;
+		width: 10rem;
+	}
+
+	#toolbar dd + dt + dd {
+		margin-top: 0;
+		margin-left: 2rem; 
+	}
+
+	#toolbar p {
+		color: #D9E7FD;
+		font-size: 1.5rem;
+		line-height: 3.5rem;
+		margin-bottom: 2rem;
+		text-align: center;
+		width: 100%;
+	}
+
+	#btnAdd {
+		padding: 0.7rem 2rem;
+		font-size: 1.4rem;
+		margin: 1.5rem auto 0 auto;
+		width: 100%;
+	}
+
+	#estimate {
+		width: auto;
+	}
+}
+
+@media (min-width: 44em) {
+	/* ================ Toolbar ================= */
+	form dd {
+		width: 50%;
+		float: left;
+	}
+
+	form dt + dd {
+		padding-left: 2rem;
+	}
+
+	#toolbar {
+		padding: 1rem;
+	}
+
+	#toolbar dl {
+		margin: auto;
+	}
+
+	#toolbar p {
+		margin-right: 1rem;
+		margin-bottom: 0;
+		text-align: left;
+		width: auto
+	}
+
+	#btnAdd {
+		padding: 0.7rem 2rem;
+		font-size: 1.4rem;
+		margin: 0 0 0 2rem;
+		width: auto;
+	}
+
+	.btn {
+		margin-top: 1rem;
+		margin-bottom: 4rem;
+	}
+}
+
+@media (min-width: 71.2em) {
+	/* styles for views wider than 60em */
+	body {
+		flex-direction: row;
+	}
+
+	form dd {
+		width: auto;
+		float: none;
+	}
+
+	form dt + dd {
+		padding-left: 0;
+	}
+
+	#mapsForm {
+		width: 35rem;
+	}
+
+	#content {
+		margin-left: 35rem;
+		padding: 4.8rem;
+		width: 90;
+	}
+
+	#mapsForm {
+		width: 35rem;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		overflow-y: auto; 
+	}
+
+	#radios label + label {
+		margin-left: 3rem;
+	}
+
+	.savedImg {
+		width: 49%;
+	}
+
+	.savedImg:nth-child(odd) {
+		margin-left: 2%;
+	}
+
+	/* ================ Toolbar ================= */
+
+	#toolbar {
+		background-color: #3367D6;
+		border-radius: 0.7rem;
+		padding: 1rem;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	#toolbar dl {
+		flex-direction: row;
+		border-radius: 0.7rem;
+		display: flex;
+		clear: both;
+	}
+
+	#toolbar dd {
+		flex-direction: row;
+		display: flex;
+		width: 11rem;
+	}
+
+	#toolbar dt + dd {
+		margin-left: 2rem;
+	}
+
+	#toolbar p {
+		color: #D9E7FD;
+		font-size: 1.5rem;
+		line-height: 3.5rem;
+		margin-right: 1rem;
+	}
+
+	#btnAdd {
+		padding: 0.7rem 2rem;
+		font-size: 1.4rem;
+		margin: 0 0 0 2rem;
+	}
+
+	.btn {
+		margin: 4rem auto;
+	}
+}
+
+@media (min-width: 90em) {
+	/* styles for views wider than 60em */
+	#mapsForm {
+		width: 25%;
+	}
+
+	#content {
+		margin-left: 25%;
+	}
+}

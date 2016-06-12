@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+Clientside Scripting - Project - Maps Check
+@author 	Elias Meire 	<elias.meire@student.odisee.be>
+-->
+<html lang="en">
+<head>
+	<title>Maps check</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="theme-color" content="#4285F4">
+	<link rel="stylesheet" href="css/normalize.css" />
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="css/vex.css" />
+	<link rel="stylesheet" href="css/vex-theme-default.css" />
+	<link rel="icon" type="image/ico" href="favicon.ico" />
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500,300' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+<body>
+	<div id="mapsForm">
+		<div id="mapsForm-content">
+			<h1>Maps Check</h1>
+			<section>
+				<h2 class="structural">Travel form</h2>
+				<form action="#" method="post" id="form1">
+					<dl>
+						<dt><label for="start" class="structural">Start:</label></dt>
+						<dd>
+							<input type="text" name="start" id="start" placeholder="Choose starting point" autocomplete="off" value="" />
+							<span class="error" id="errStart">&nbsp;</span>
+							
+						</dd>
+						<dt><label for="destination" class="structural">Destination:</label></dt>
+						<dd>
+							<input type="text" name="destination" id="destination" placeholder="Choose destination" autocomplete="off" value="" />
+							<span class="error" id="errDestination">&nbsp;</span>
+						</dd>
+						<dt></dt>
+						<dd class="clearfix">
+							<fieldset id="radios" class="clearfix">
+								<legend class="structural">Travel mode:</legend>							
+								<label for="driving" class="material-icons"><input type="radio" name="mode" id="driving" value="driving" checked/><span>&#xE531;</span></label>								
+								<label for="cycling" class="material-icons"><input type="radio" name="mode" id="cycling" value="cycling" /><span>&#xE52F;</span></label>
+								<label for="walking" class="material-icons"><input type="radio" name="mode" id="walking" value="walking" /><span>&#xE536;</span></label>
+								<span class="error" id="errMode">&nbsp;</span>
+							</fieldset>
+						</dd>
+						<dt>
+							<input type="submit" class="btn" id="btnCalc" name="btnCalc" value="Calculate" />
+							<button class="btn" id="btnEdit">Edit</button>
+						</dt>
+						<dd></dd>
+					</dl>
+				</form>			
+			</section>
+		</div>
+	</div>
+	<div id="content">
+		<section>
+			<h2>Map</h2>
+			<p id="estimate">Google's estimate: <span></span></p>
+			<div id="map-canvas"></div>
+		</section>
+		<section>
+			<h2 class="structural">Toolbar</h2>
+			<div id="toolbar">
+				<p>Add your travel time</p>
+				<dl>
+					<dt><label for="day" class="structural">Days:</label></dt>
+					<dd>
+						<input type="number" name="day" id="day" placeholder="days" value="" />
+					</dd>
+					<dt><label for="hour" class="structural">Hours:</label></dt>
+					<dd><input type="number" name="hour" id="hour" placeholder="hours" value="" /></dd>
+					<dt><label for="min" class="structural">Minutes:</label></dt>
+					<dd><input type="number" name="min" id="min" placeholder="minutes" value="" /></dd>
+				</dl>
+				<button class="btn" id="btnAdd">Add Time</button>
+			</div>
+			<span class="error" id="errTime">&nbsp;</span>
+		</section>
+		<section>			
+			<h2>Graph</h2>
+			<canvas id="graph-canvas"></canvas>
+			<div id="graph-legend"></div>
+			<button class="btn" id="btnSave">Save graph as image</button>
+			<div id="savedImages">
+				<h3>Saved Images</h3>
+			</div>
+		</section>		
+	</div>
+	
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src="js/vex.combined.min.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQWdbGUB6fOWzPaCaq_wMR8fza3XyTwUQ&amp;libraries=places&amp;language=en-US&amp;"></script>
+	<script src="js/Chart.min.js"></script>
+</body>
+</html>
